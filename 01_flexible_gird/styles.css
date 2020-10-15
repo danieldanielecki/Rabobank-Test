@@ -1,0 +1,52 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  grid-template-areas: "one two three four";
+}
+
+div {
+  border: 1px solid black;
+  text-align: center;
+}
+
+#one {
+  background-color: yellowgreen;
+  grid-area: one;
+}
+
+#two {
+  background-color: antiquewhite;
+  grid-area: two;
+}
+
+#three {
+  background-color: cadetblue;
+  grid-area: three;
+}
+
+#four {
+  background-color: chocolate;
+  grid-area: four;
+}
+
+@media (max-width: 719px) {
+  body {
+    grid-template-areas:
+      "one two"
+      "three four";
+  }
+}
+
+@media (max-width: 359px) {
+  body {
+    grid-template-areas:
+      "one"
+      "two"
+      "three"
+      "four";
+  }
+}

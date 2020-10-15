@@ -1,0 +1,112 @@
+<section>
+  <mat-card
+    fxFlex="50"
+    fxFlex.md="80"
+    fxFlex.lt-md="90"
+    fxFlexOffset="25"
+    fxFlexOffset.md="10"
+    fxFlexOffset.lt-md="5"
+    class="mat-elevation-z24"
+  >
+    <mat-card-title role="heading" title="Payment Validation">
+      Payment Validation</mat-card-title
+    >
+    <mat-card-content>
+      <form
+        #formDirective="ngForm"
+        (ngSubmit)="submitForm(formDirective)"
+        [formGroup]="paymentForm"
+        fxLayout="column"
+        fxLayoutAlign="space-between stretch"
+        fxLayoutGap="20px"
+      >
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            required
+            formControlName="formControlUserName"
+            type="text"
+            placeholder="John Krane"
+          />
+          <mat-hint>*Name on Card</mat-hint>
+          <mat-error *ngIf="!paymentForm.get('formControlUserName')!.valid">
+            Invalid Cardholder Name.
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <input
+            matInput
+            required
+            formControlName="formControlCardNumber"
+            type="text"
+            placeholder="1234123412341234"
+          />
+          <mat-hint>*Card Number</mat-hint>
+          <mat-error *ngIf="!paymentForm.get('formControlCardNumber')!.valid">
+            Invalid Card Number.
+          </mat-error>
+        </mat-form-field>
+        <div>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              required
+              formControlName="formControlExpirationCardMonth"
+              type="number"
+              placeholder="07"
+            />
+            <mat-hint>*Month of Expiration</mat-hint>
+            <mat-error
+              *ngIf="!paymentForm.get('formControlExpirationCardMonth')!.valid"
+            >
+              Invalid Month of Expiration.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              required
+              formControlName="formControlExpirationCardYear"
+              type="number"
+              placeholder="2020"
+            />
+            <mat-hint>*Year of Expiration</mat-hint>
+            <mat-error
+              *ngIf="!paymentForm.get('formControlExpirationCardYear')!.valid"
+            >
+              Invalid Year of Expiration.
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              required
+              formControlName="formControlSecurityNumber"
+              type="text"
+              placeholder="123"
+            />
+            <mat-hint>*CVV/CVC</mat-hint>
+            <mat-error
+              *ngIf="!paymentForm.get('formControlSecurityNumber')!.valid"
+            >
+              Invalid CVV / CVC Number.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <button
+          mat-raised-button
+          color="primary"
+          [disabled]="!paymentForm.valid"
+        >
+          Submit
+        </button>
+        <!--
+          NOTE: I've decided to go with SweetAlerts instead of this unstyled text.
+        <h3 class="center-block text-center">
+          Display the message here
+        </h3>
+        -->
+      </form>
+    </mat-card-content>
+  </mat-card>
+</section>
